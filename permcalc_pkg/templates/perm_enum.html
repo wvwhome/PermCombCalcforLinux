@@ -1,0 +1,115 @@
+{% extends "layout.html" %}
+{% block content %}
+    <!--  perm_enum.html   03/07/2019  WVW -->
+    
+    <!--  03/11/2019 WVW: Remove the unordered list bullets since they are overlaying the box.  -->
+    <!--  03/20/2019 WVW: Bootstrap 4.3.1 has box issues with form-control.   Use border rounded instead -->
+   
+    <div class="content-section">
+  
+        <form method="POST" action="">
+            <!-- {{ form.hidden_tag() }}   -->
+           
+            <fieldset class="form-group">
+                <!--   03/18/19  This causes validation error:
+                  Element legend not allowed as child of element div in this context. (Suppressing further errors from this subtree.)
+                -->                   
+                <legend class="border-bottom mb-4">Enumerate (Count) Permutations or Combinations
+                              </legend>
+                              
+                <div class="form-group">
+                       
+                    <!--   03/18/19  This causes validation error:
+                     The value of the for attribute of the label element must be the ID of a non-hidden form control.                        
+                    -->                        
+                                 
+                    {{ form.perm_comb_ind.label(class="form-control-label") }}
+
+                    {% if form.perm_comb_ind.errors %}
+                        <!-- was  form.perm_comb_ind(class="form-control form-control-lg is-invalid")   -->
+                        {{ form.perm_comb_ind(class="border rounded pl-3 pt-2 is-invalid") }}                            
+                        <div class="invalid-feedback">
+                            {% for error in form.perm_comb_ind.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <!--   was form.perm_comb_ind(class="form-control form-control-lg list-unstyled")  -->
+                        {{ form.perm_comb_ind(class="border rounded pl-3 pt-2  list-unstyled") }}                             
+                    {% endif %}
+           
+                </div>              
+            </fieldset>
+            
+            <fieldset class="form-group">                   
+                <div class="form-group">
+                    {{ form.number_n.label(class="form-control-label") }}
+                    {% if form.number_n.errors %}
+                        {{ form.number_n(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.number_n.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.number_n(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+            </fieldset>
+            
+            <fieldset class="form-group">                                   
+                <div class="form-group">
+                    {{ form.number_r.label(class="form-control-label") }}
+                    {% if form.number_r.errors %}
+                        {{ form.number_r(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.number_r.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.number_r(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>                    
+            </fieldset>
+            
+            <fieldset class="form-group">                      
+                <div class="form-group">
+                    {{ form.number_dupes_str.label(class="form-control-label") }}
+                    {% if form.number_dupes_str.errors %}
+                        {{ form.number_dupes_str(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.number_dupes_str.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.number_dupes_str(class="form-control form-control-lg") }}
+                    {% endif %}                    
+                </div>                
+            </fieldset>
+           
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+        </form>
+        
+    </div>
+    
+    <div class="border-bottom mb-4 font-weight-bold">
+    
+        {% if perm_result > '' %}
+            Result: {{ perm_result }} - 
+                 {{  time_display  }}   
+            <br>
+        {% endif %}    
+        
+      
+        {% if perm_sci_result > '' %}          
+            {{ perm_sci_result  |  safe }}               
+            <br>
+        {% endif %}  
+    
+    </div>
+    
+{% endblock content %}

@@ -1,0 +1,257 @@
+{% extends "layout_without_side_menu.html" %}
+{% block content %}
+
+<!--  discussion.html     created 03/10/2019   -->
+<!--  last update   03/16/2019   two columns again using layout_without_side_menu  -->
+<!--   03/18/19: Changes for validator   -->
+<!--   11/16/19: Typo and on VPS Dime also.   -->
+<!--   05/12/21: In January 2021 mathforum.org was shutdown/moved to  https://www.nctm.org/tmf/dr.math/ or https://www.themathdoctors.org/  -->
+
+<h4 style="text-align:center">
+Enumerator and Generator
+- handles Duplicates/Multiples
+</h4>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+         Permutations and Combinations are described on many web sites.
+         This page focuses on permutations and combinations with duplicates (multiples).
+         The calculators handle regular permutations and combinations also.
+         The academic level is high school mathematics
+         or college algebra.
+         <br/><br/>
+         <p>
+          Terminology used here.  A set (or group) is composed of one or more elements and each element is unique.
+          A multiset (or group) is composed of one or more elements and some could be the same.
+          A permutation of the group is the elements arranged in a particular order and number (fixed) of elements in the
+          permutation could be less than the total number of elements in the group.  The total number of elements in the group is
+          assigned to the variable N here, and R is the fixed number of elements in a permutation,  where R &lt;= N.
+          These are known as R-Permutations or R-Combinations.  For a Combination, the order does not matter.
+
+          The other elements that are
+          the same kind are called either duplicates or multiples (We're using the terms interchangeably here).
+          When we refer to the count of duplicates, we mean the
+          total count of all the elements of a particular kind -- not just the additional ones that are the same.
+          For instance, the word DAFFODIL has eight
+          elements (letters in this case).  The counts of duplicates/multiples are two for 'D' and
+          two for 'F'.
+
+          <p>Here 'enumerating' means the process of counting all the unique permutations (or combinations).
+          (The first sense of the word: "to ascertain the number of")
+           Though a group could
+          be a multiset, the set (list) of permutations is a plain set for the processing here -- no mutliples.
+          <p>Also 'generating' is the process of creating all the unique permutations (or combinations). In case of this program,
+          the permutations or combinations are not only generated in some data structure,
+          they are also actually listed on a web page (up to {{ perm_discusss_limit }}).
+
+          <br>
+          Note: I've borrowed most of this terminology from Donald Knuth's book, <span class="book-title">
+          The Art of Computer Programming (TAOCP)
+          Volume 4 Fascicle 2, Generating All Tuples and Permutations</span> (2005), v+128pp. ISBN 0-201-85393-0.
+          Any errors are mine.
+
+         <p>
+         Note the differences between duplicates and unrestricted repetitions for the purposes here.
+         An example of permutations with unrestricted repetitions is assigning letters and
+         numbers (elements) to automobile license plates.
+         For three letters and three digits in the English alphabet, the number of permutations is
+         <br/> 26 x 26 x 26 x 10 x 10 x 10 =  17,576,000
+         <br/> since any letter or digit can be selected more than once.
+         <br/>
+         <br/>
+         An example of permutations with duplicates (multiples) is arranging the letters in a word, such as
+         DAFFODIL.  If all (eight) letter permutations is the goal, the number of permutations is
+         <br/> 8! / (2! x 2!)  = 10,080
+         <br/>However, if the count of four letter permutations is the goal, the answer is not
+         <br/>  P(8, 4) / (2! x 2!) =   <span style="color:red">420 incorrect</span>
+         <br/> The actual result is <b>606</b>
+         <br/> A simple counterexample to the formula above is the count of
+              two permutations with duplicates of the
+              letters in the word BABY.
+         <br/> Simple manual enumeration yields: AB, AY, BA, BB, BY, YA, YB -- seven total.
+              However, the formula P(4, 2) / 2!  <span style="color:red">yields 6, which is not the correct result.</span>
+              This is the original motivation for this page -- in order to dispel this
+              misconception.
+         <br/> The solution involves enumerating generating functions -- beyond the scope of high
+              school algebra textbooks.  See "Introduction to Combinatorial Analysis" by John Riordan,
+              though he doesn't use the duplicate terminology used here.  He also calls 'elements' 'things'.
+              In combinatorial analysis these are now called permutations of
+              <a href="http://en.wikipedia.org/wiki/Multiset" target="_BLANK">multisets</a>.
+         <br/>
+   </div>
+   <br>
+  <div class="col-md-6">
+         This section has links to three online calculators that provide the correct results for such permutations
+                   and combinations.
+     <br/>
+
+     <ul>
+         <li>
+             <a href="/enumerate/">Online Permutations Combinations Enumerator - General version</a>
+                 that optionally handles duplicates/mutliples.
+              <br/>Standard notation P(N, R) and C(N, R) is for N elements taken R at a time.
+              <!--
+              <br/><a href="../cgi-bin/math/perm_calculator.cgi?form_radio_type=P&amp;form_step=1&amp;form_number_n=4&amp;form_number_r=2&amp;example_ind=Y&amp;form_number_dupes=2">
+                   For example</a>,
+              -->
+              For example,
+              select Permutations and enter for
+              "N, number of elements in the group": 4.
+              Enter for "R, number of elements in the R-permutations/combinations": 2,
+             and for
+              "Counts of duplicate elements in N": 2.  Then press the 'Enumerate' button.
+
+              The result will be 7.
+
+              <br/>
+              <!--
+              Another <a href="../cgi-bin/math/perm_calculator.cgi?form_radio_type=P&amp;form_step=1&amp;form_number_n=8&amp;form_number_r=4&amp;example_ind=Y&amp;form_number_dupes=2 2">example</a>,
+              -->
+              Another example,
+              select Permutations and enter for N 8, for R 4, and for
+              "Counts of duplicate elements in N"
+                   2 2.  The result will be 606 -- as for the four letter
+                  permutations of the word DAFFODIL.  There are two letters for the subgroup D,D and
+                  two letters for the subgroup F,F.
+              <br/>Notation for the calculator:
+              <br/>p<sub>1</sub> + p<sub>2</sub> + ... + p<sub>k</sub> = N
+              <br/>where p<sub>j</sub> is the count of duplicate elements in a subgroup of identical elements.
+              <br/>p<sub>j</sub> is assumed to be one for all j unless specified otherwise.
+           </li>
+
+         <li>
+             <a href="/enumerate_word/">Online Permutations Combinations Enumerator - Word version</a>
+                 that optionally handles duplicates.
+               <!--
+              <br/><a href="../cgi-bin/math/perm_calculator_word.cgi?form_step=1&amp;form_radio_type=P&amp;form_word=BABY&amp;form_number_k=2&amp;example_ind=Y">For example</a>,
+               -->
+                 For example,
+                 select Permutations and enter for "Word/String": BABY and 2 for the
+                   "R, number of characters in the R-permutations/combinations".
+                    Then press the 'Enumerate' button.
+                    The number of two letter permutations of the
+                    word BABY will be displayed.  The Result will be 7.
+              <br/>Another example
+                  <!--
+                   <a href="../cgi-bin/math/perm_calculator_word.cgi?form_step=1&amp;form_radio_type=P&amp;form_word=DAFFODIL&amp;form_number_k=4&amp;example_ind=Y">example</a>,
+                   -->
+              select Permutations and enter for the word DAFFODIL and 4 for the
+                   'R, Number of characters in the R-permutations/combinations.'  The number of four letter permutations of the
+                   word will be displayed.  The Result will be 606.
+             <br/>
+
+         </li>
+         <li>
+             <a href="/generate/">Online Permutations Combinations Generator</a>
+              <br/>
+              <!--
+              <a href="../cgi-bin/math/perm_generator.cgi?form_step=1&amp;form_radio_type=P&amp;form_word=BABY&amp;form_number_k=2&amp;example_ind=Y">For example</a>,
+              -->
+                   For example,
+                   select Permutations and enter for the "Word/String": BABY and for the
+                   "R, number of characters in the R-permutations/combinations": 2.
+                   ' Then press the 'Generate' button.
+                   The seven two-letter permutations of the
+                   word BABY will be listed.
+              <br/>Another example,
+                   <!--
+                   <a href="../cgi-bin/math/perm_generator.cgi?form_step=1&amp;form_radio_type=P&amp;form_word=DAFFODIL&amp;form_number_k=4&amp;example_ind=Y">example</a>,
+                   -->
+                  select Permutations and for the word enter DAFFODIL and for the
+                   "Number of characters": 4.  The 606 four-letter permutations of the
+                   word will be listed.
+              <br/>The generation output limit is {{ perm_discusss_limit }} in order to conserve computer resources.
+         </li>
+      </ul>
+   </div>
+
+    <div class="row">
+    <div class="col-md-6">
+
+   <h5>Release History</h5>
+
+   <table class="table">
+   <thead class="thead-light">
+      <tr>
+        <th>Release</th>
+        <th>Date</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+       <td>1.0  <td>October&nbsp;2009  <td>   Use the Rexx language on a Host Monster rented host.
+                                                                        All algorithms are hand-coded.
+     <tr>
+       <td>2.0  <td>March&nbsp;2019    <td>  Rewrite the processing in the Python language
+                                                                        and use Python packages.
+                                                                        Host on Google Cloud Platform.
+     <tr>
+       <td>2.1  <td>Nov. 15,&nbsp;2019    <td>  Host on a Linux CentOS 7 server now.
+
+
+    </table>
+
+    </div>
+
+    <div class="col-md-6">
+
+   <h5>Credits</h5>
+   <p style="margin-bottom:0">For version 1.0
+     <ul style="margin-top:0">
+       <li>
+          The published book <span class="book-title">
+          Introduction to Combinatorial Analysis</span> by John Riordan (1958) for enumerating generating functions.
+          Still in print in 2019 by Dover Publications.
+
+       <li>
+          The online book <span class="book-title">
+          Combinatorial Generation</span> by Frank Ruskey (2003)
+           As of March 13, 2019
+           <a href="https://www.scribd.com/document/332584669/Combinatorial-Generation-Ruskey-pdf"
+           target="_BLANK">
+           available on SCRIBD</a>.
+
+          Section 4.5   "Permutations of a Multiset"  page 69;
+
+          Section 4.5.1 "Combinations of a Multiset"  page 71.
+          Algorithms to generate Permutations and Combinations.
+     </ul>
+   <p style="margin-bottom:0">For version 2.0
+     <ul style="margin-top:0">
+       <li><span class="book-title">
+          Introduction to Combinatorial Analysis</span>    by John Riordan again.
+       <li>
+          For generating Permutations: <a href="https://docs.sympy.org" target="_BLANK">SymPy</a>,
+                                                   a Python library for symbolic mathematics.
+       <li>
+           For general Web development:
+            <a href="https://en.wikipedia.org/wiki/Flask_(web_framework)" target="_BLANK">Flask web framework</a>.
+
+     </ul>
+
+
+  <br/>
+   </div>
+   </div>
+
+    <div class="row">
+    <div class="col-md-12 text-center">
+  Questions, Comments, Suggestions?
+  <a href="mailto:wvanwyck@gmail.com?subject=Permutations%20Calculator">Contact Warren Van Wyck</a> Vermont, USA
+    <br>
+   Created: Oct. 17, 2009  Updated: May 12, 2021 A
+
+  </div>
+  </div>
+
+<br/>
+<br/>
+
+</div>
+</div>
+
+
+{% endblock content %}

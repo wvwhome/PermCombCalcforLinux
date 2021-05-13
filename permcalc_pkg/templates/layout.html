@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--  layout.html   03/07/2019  Warren Van Wyck  -->
+
+    <!--  *** Change History  ***
+     see also layout_with_side_menu.html
+     03/15/19:  Update bootstrap to 4.3.1.   Causes display problems with Radio group enclosure
+     03/16/19:  KISS simplify:  Remove static/main.css usage
+     03/18/19:  Add favicon.
+     03/20/19:  Add placeholders and scientific notation.
+     11/19/19:  Add Google Analytics
+
+   -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-152880292-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-152880292-1');
+    </script>
+
+
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="description" content="Permutations with Duplicates Calculator and Generator"/>
+    <meta name="keywords" content="permutations combinations duplicates repeats repetitions multiplicity" />
+    <meta name="keywords" content="permutation  combination  duplicate  repeat  repetition  multiples" />
+    <meta name="keywords" content="indistinguishable identical restricted nonunique count counts counter" />
+    <meta name="keywords" content="object objects arrangement arrangements ordered order" />
+    <meta name="keywords" content="multisets multiset combinatorial combinatorics enumeration" />
+    <meta name="keywords" content="subset submultiset proper wvw combinatorics bag mset" />
+    <meta name="keywords" content="generator generating generation calculator online" />
+
+    <!-- Bootstrap CSS 4.0.0 -->
+<!--
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  -->
+
+ <!-- Bootstrap CSS  4.3.1 -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<!--  03/16/2019 WVW  KISS  maybe later.  -->
+<!--     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='main.css')}}"> -->
+
+    <link rel="stylesheet" type="text/css" href="/static/main_subset.css">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+    <title>Permutations and Combinations Calculators</title>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-md bg-secondary text-white">
+
+       <div class="container">
+           <a class="navbar-brand mr-8 text-white" href="/math">Permutations and Combinations Calculators</a>
+       </div>
+    </nav>
+
+    <main class="container">
+      <div class="row">
+        <div class="col-md-8 py-3">
+          {% block content %}{% endblock %}
+        </div>
+
+        <div class="col-md-4 py-3">
+          <div class="content-section text-muted">
+            <h5 style="text-align:center">Menu</h5>
+            <p>
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-light">
+                    <a class="nav-item nav-link" href="{{url_for('perm_enum_f') }}">Enumerate (Count)</a></li>
+                <li class="list-group-item list-group-item-light">
+                    <a class="nav-item nav-link" href="{{url_for('perm_enum_word_f') }}">Enumerate (Count) for Word</a></li>
+                <li class="list-group-item list-group-item-light">
+                    <a class="nav-item nav-link" href="{{url_for('perm_generate_f') }}">Generate (List)</a></li>
+                <li class="list-group-item list-group-item-light">
+                    <a class="nav-item nav-link" href="{{url_for('perm_discussion_f') }}">Discussion</a></li>
+
+              </ul>
+
+          </div>
+        </div>
+      </div>
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="page-footer font-small blue pt-4">
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">
+          ©2019 WebViewWorks
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!--
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+ -->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>
