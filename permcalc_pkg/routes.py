@@ -1,13 +1,32 @@
-#  File routes.py
+'''
+     Permutations-Combinations Calculator.  File routes.py
+'''
 #
-#  03/07/2019 WVW: Permutations-Combinations Calculator.
-#  03/14/2019 WVW: Deploy version 2.0 in GCP.
+#  03/07/19 WVW: Permutations-Combinations Calculator.
+#  03/14/19 WVW: Deploy version 2.0 in GCP.
 #  11/19/19:  Cosmetic changes for Sublime Linter.  Add route for /math/.
+#  03/02/23: pylint changes to WTForm 3.0 change in main.py
 #
 #     Only processing data from "POST" requests.
 #
 #
+version_id = '03-02-2023 A'
+
+import platform
+import inspect
+#
+import time
+import datetime
+
+from decimal import Decimal
+from math import factorial
+from collections import Counter
+from sympy.utilities.iterables import multiset_permutations
+from sympy.utilities.iterables import multiset_combinations
+
 from flask import render_template, request
+
+from perm_counter_sub import perm_counter   # written by me
 from permcalc_pkg import app
 from permcalc_pkg.forms import PermEnumForm
 from permcalc_pkg.forms import PermEnumWordForm
@@ -15,26 +34,13 @@ from permcalc_pkg.forms import PermGenerateForm
 from permcalc_pkg.forms import edit_dupes_string
 # from pprint import pprint
 
-from perm_counter_sub import perm_counter   # written by me
-import platform
-import inspect
-#
-import time
-import datetime
-#  03/09/2019  request.environ['REMOTE_ADDR'] is only returning 127.0.0.1  for GAE -- needs works
-from math import factorial
-from collections import Counter
-from sympy.utilities.iterables import multiset_permutations
-from sympy.utilities.iterables import multiset_combinations
-from decimal import Decimal
-
 start_time = datetime.datetime.now()
 print()
 print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! start time:', start_time)
 this_program = inspect.currentframe().f_code.co_filename
 print('*** program starting=')
 print(this_program)
-print('version:   ', '11/18/19 B')
+print('version:   ', version_id)
 print('Python:    ', platform.python_version())
 
 #  Limit the output of list elements to conserve resources on the host

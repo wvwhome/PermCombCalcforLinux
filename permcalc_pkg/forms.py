@@ -1,7 +1,11 @@
-#  forms.py   for the Permutations and Combinations Calculators project
-#   03/07/2019: Created Warren Van Wyck using WTForm 2.2.1
-#   03/20/2019: Add placeholders
-#   11/19/19: Cosmetic changes for Sublime Linter.
+'''
+  forms.py   for the Permutations and Combinations Calculators project
+'''
+#  03/07/19: Created Warren Van Wyck using WTForm 2.2.1
+#  03/20/19: Add placeholders
+#  11/19/19: Cosmetic changes for Sublime Linter.
+#  03/02/23: For WTForm 3.0
+#            manually changed validators.required() call to validators.DataRequired()
 
 
 from flask_wtf import FlaskForm
@@ -20,13 +24,16 @@ def edit_dupes_string(in_string):
 
 #
 class PermEnumForm(FlaskForm):
+    '''
+          Display Menu
+    '''
     perm_comb_ind = RadioField('Choose Type:',
                                choices=[('P', 'Permutations'), ('C', 'Combinations')],
                                default='P'
                                )
 
     number_n = IntegerField('Enter N, number of elements in the group:',
-                   validators=[validators.required(),
+                   validators=[validators.DataRequired(),
                                validators.NumberRange(min=1, max=1000,
                                         message="Must be a positive integer <= %(max)d")],
                                render_kw={"placeholder": "for example, 8"}
@@ -70,9 +77,9 @@ class PermEnumForm(FlaskForm):
             for dupe_item in dupes_list:
                 try:
                     check_int = int(dupe_item)
-                except ValueError:
+                except ValueError as exc:
                     err_message = f'This item is not an integer: "{ dupe_item }"  '
-                    raise ValidationError(err_message)
+                    raise ValidationError(err_message) from exc
                 if check_int < 1:
                     err_message = f'This item is not a positive integer: "{ dupe_item }"  '
                     raise ValidationError(err_message)
@@ -85,12 +92,15 @@ class PermEnumForm(FlaskForm):
 
 #
 class PermEnumWordForm(FlaskForm):
+    '''
+          Display Enumerate
+    '''
     perm_comb_ind = RadioField('Choose Type:',
                                choices=[('P', 'Permutations'), ('C', 'Combinations')],
                                default='P'
                                )
     word_in = StringField('Enter Word/String -- any spaces will be removed:',
-                validators=[validators.required(),
+                validators=[validators.DataRequired(),
                             validators.Length(min=1, max=200,
                                         message="Word length must be <= %(max)d")  ],
                 render_kw={"placeholder": "for example, DAFFODIL"}
@@ -115,13 +125,16 @@ class PermEnumWordForm(FlaskForm):
 #
 #
 class PermGenerateForm(FlaskForm):
+    '''
+          Display Generate
+    '''
     perm_comb_ind = RadioField('Choose Type:',
                                 choices=[('P', 'Permutations'), ('C', 'Combinations')],
                                 default='P'
                                 )
 
     word_in = StringField('Enter Word/String -- any spaces will be removed:',
-                  validators=[validators.required(),
+                  validators=[validators.DataRequired(),
                       validators.Length(min=1, max=200,
                                         message="Word length must be <= %(max)d")  ],
                   render_kw={"placeholder": "for example, DAFFODIL"}
