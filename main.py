@@ -1,11 +1,11 @@
 #   main.py
-#    03/04/19  Warren Van Wyck,    Ferrisburgh, Vermont USA
-#    03/14/19 WVW: Deploy version 2.0 in GCP App Engine project wvw-proj-perm
-#    11/19/19: On Linux for VPS Dime production using Nginx.
 #
-#       Permutations and Combinations Calculators in Python - Flask
-#       handles duplicate/multiples
-#       Enumerates (Counts) and Generates (Lists)
+#
+'''
+          Permutations and Combinations Calculators in Python - Flask
+          handles duplicate/multiples
+          Enumerates (Counts) and Generates (Lists)
+'''
 #
 #       The only logging done now is using stdout.
 #
@@ -14,6 +14,9 @@
 #       served http://www.webviewworks.com/math/index.html
 #       Previous Rexx source code saved here: C:\aaWVW\programs\Rexx Regina\Permutations_Calculator
 #
+#    03/04/19  Warren Van Wyck,    Ferrisburgh, Vermont USA
+#    03/14/19 WVW: Deploy version 2.0 in GCP App Engine project wvw-proj-perm
+#    11/19/19: On Linux for VPS Dime production using Nginx.
 #
 #   Setup Python environment for local development and testing:
 #

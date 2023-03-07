@@ -1,0 +1,12 @@
+     help  for perm_calc_proj      05/14/2021
+     =======================
+
+05/14/21   Use git for version control
+
+           On wvwelectric.com     perm_calc_proj.git   is the bare Repo
+           git branch -u live/master     #  is a remote here
+
+           git branch -u origin/master   #  is the GitHub   project on wvwhome   PermCombCalcforLinux
+
+
+           so switch branches for the push.
