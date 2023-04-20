@@ -14,9 +14,10 @@
 #       served http://www.webviewworks.com/math/index.html
 #       Previous Rexx source code saved here: C:\aaWVW\programs\Rexx Regina\Permutations_Calculator
 #
-#    03/04/19  Warren Van Wyck,    Ferrisburgh, Vermont USA
-#    03/14/19 WVW: Deploy version 2.0 in GCP App Engine project wvw-proj-perm
+#    03/04/19: Warren Van Wyck,    Ferrisburgh, Vermont USA
+#    03/14/19: WVW: Deploy version 2.0 in GCP App Engine project wvw-proj-perm
 #    11/19/19: On Linux for VPS Dime production using Nginx.
+#    03/07/23: Minor code reformatting for pylint.
 #
 #   Setup Python environment for local development and testing:
 #

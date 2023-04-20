@@ -4,9 +4,16 @@
 05/14/21   Use git for version control
 
            On wvwelectric.com     perm_calc_proj.git   is the bare Repo
-           git branch -u live/master     #  is a remote here
+           #  git branch -u live/master     #  is a remote here
+
+           git branch -u github/master     #  is a remote here  03/07/23
+
 
            git branch -u origin/master   #  is the GitHub   project on wvwhome   PermCombCalcforLinux
 
 
            so switch branches for the push.
+
+03/07/23  Add .ssh/id_rsa.pub   to  wvwhome github  SSH Keys as 'CentOS 7 Nginx WW Home' -- yes, misspelled 'WVW'
+
+
